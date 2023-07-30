@@ -1,7 +1,7 @@
 fine tune GAN such it takes random noise as input -> generates diseased ultrasound
 my role: find LLMs from image to detailed text
 
-personal access token
+personal access token (doesnt work, github detected these and blocked them - next time dont store tokens in text files)
 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
 
 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
