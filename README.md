@@ -1,8 +1,13 @@
 # LLM_Biohackers
-Wang Junwei
-Goh Eng Zhong Joshua
-Qu Zhetao
-Jonathan Ng
+- Wang Junwei
+- Goh Eng Zhong Joshua
+- Qu Zhetao
+- Jonathan Ng
+
+## Problem Statement & Solution
+Lack of training in how to use ultrasound for proficiency identifying anomalies and pathologies in the images acquired for formulateion of a diagnosis. The barrier to training is the lack of access to patients with said pathologies and scarcity of quality images.
+
+![2023-07-30 13 59 25](https://github.com/wjunwei2001/LLM_Biohackers/assets/96434745/44cc9194-8e1d-4f8f-8911-a5461c89a6ed)
 
 
 ## Data Processing & Augmentation
@@ -12,6 +17,7 @@ From there, we run the data_augmentation.py script to generate a wider variety o
 We do so as training of the GAN model will be more effective on a larger dataset.
 
 The dataset was obtained from https://www.kaggle.com/datasets/aryashah2k/breast-ultrasound-images-dataset 
+
 
 ## GAN - Image-to-Image generation
 Generative Adversarial Networks use neural networks **Generative Modeling** for automatic discovery and learning of regularities or patterns in input data to be able to new examples that plausibly could have been drawn from the original dataset. The GAN model consists of 2 neural networks, **Generator** and **Discriminator**, that are trained in tandem for each batch of training data with the Generator's objective to "fool" the discriminator. The Adam optimizer with some custom parameters (betas) that are known to work well for GANs.
@@ -35,8 +41,13 @@ The implementation of the GAN was inspired by the tutorial at https://jovian.com
 ### Running the GAN training script
 Define the hyperparameters of your choice before running the 1st cell in `trainGAN.ipynb`. Batches of outputted sample images from the generator will be saved in the "generated" folder for user monitoring of the model. 
 
+![2023-07-30 13 59 31](https://github.com/wjunwei2001/LLM_Biohackers/assets/96434745/3b75edcd-062c-448d-b821-cd0f2728d98b)
+
+
 Once training job is done, run the 2nd and 3rd cells to obtain the graphical visualisation of the model training performance. Visualizing
 losses is quite useful for monitoring the training process. For GANs, we expect the generator's loss to reduce over time, without the discriminator's loss getting too high.
+
+![2023-07-30 13 59 29](https://github.com/wjunwei2001/LLM_Biohackers/assets/96434745/dbb806e4-ca7d-4a30-beb7-63b419eaa90c)
 
 If ideal, run the 4th and 5th cell to save the model weight and obtain a mp4 recording of the full training loop.
 
