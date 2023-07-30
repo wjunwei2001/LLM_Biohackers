@@ -20,7 +20,13 @@ GANs are extremely sensitive to hyperparameters, activation functions and regula
 - epochs ran
 - loss function
 
+### Running the GAN training script
+Define the hyperparameters of your choice before running the 1st `trainGAN.ipynb`. Batches of outputted sample images from the generator will be saved in the "generated" folder for user monitoring of the model. 
 
+Once training job is done, run the 2nd and 3rd cells to obtain the graphical visualisation of the model training performance. Visualizing
+losses is quite useful for monitoring the training process. For GANs, we expect the generator's loss to reduce over time, without the discriminator's loss getting too high.
+
+If ideal, run the 4th and 5th cell to save the model weight and obtain a mp4 recording of the full training loop.
 
 
 ## LLM - ultrasound image caption
