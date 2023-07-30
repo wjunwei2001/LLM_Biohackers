@@ -1,5 +1,28 @@
 # LLM_Biohackers
 
+## Data Processing & Augmentation
+Our dataset initially contained extra data (*_mask.png files) as it originated from a different project with a different use case. Our `data_extraction.py` file extracts the relevant files (non *_mask.png files) to obtain a dataset of only malignant breast cancer ultrasound images. 
+
+From there, we run the data_augmentation.py script to generate a wider variety of data to be used for future training of the model. We do so as training of the GAN model will be more effective on a larger dataset.
+
+## GAN - Image-to-Image generation
+Generative Adversarial Networks use neural networks **Generative Modeling** for automatic discovery and learning of regularities or patterns in input data to be able to new examples that plausibly could have been drawn from the original dataset. The GAN model consists of 2 neural networks, **Generator** and **Discriminator**, that are trained in tandem for each batch of training data with the Generator's objective to "fool" the discriminator. Discriminator is trained for a few epochs, then the generator is trained for a few epochs, and repeat. This way both the generator and the discriminator get better at doing their jobs.
+
+<img width="346" alt="Screenshot 2023-07-30 at 1 16 09 PM" src="https://github.com/wjunwei2001/LLM_Biohackers/assets/96434745/716488f6-3fd8-46ac-a130-2988f206f2b2">
+
+The generator generates a fake image given a seed of a latent tensor (matrix of random numbers), and the discriminator attempts to detect whether a given sample is real/fake (originates from dataset). 
+
+The output of the discriminator is a single number between 0 and 1, which can be interpreted as the probability of the input image being real i.e. picked from the original dataset. Since the discriminator is a binary classification model, the binary cross entropy loss function is used to quantify how well it is able to differentiate between real and generated images.
+
+GANs are extremely sensitive to hyperparameters, activation functions and regularization. Notably, we have tied down the to the following parameters to reach the current best model
+- beta value
+- learning rate
+- epochs ran
+- loss function
+
+
+
+
 ## LLM - ultrasound image caption
 The LLM is microsoft/git-base from Hugging Face. This model is called the GIT (short for GenerativeImage2Text) model, base-sized version. It was introduced in the paper GIT: A Generative Image-to-text Transformer for Vision and Language by Wang et al (https://arxiv.org/abs/2205.14100). GIT is a Transformer decoder conditioned on both CLIP image tokens and text tokens. The model is trained using "teacher forcing" on a lot of (image, text) pairs. The goal for the model is simply to predict the next text token, giving the image tokens and previous text tokens. The model has full access to (i.e. a bidirectional attention mask is used for) the image patch tokens, but only has access to the previous text tokens (i.e. a causal attention mask is used for the text tokens) when predicting the next text token.
 
