@@ -1,0 +1,40 @@
+fine tune GAN such it takes random noise as input -> generates diseased ultrasound
+my role: find LLMs from image to detailed text
+
+personal access token
+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
+
+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
+
+Captions
+This is an ultrasound image of breast cancer. Please caption based on this
+
+1 png
+The image shows a large, irregularly shaped mass in the center of the breast, surrounded by a thick layer of tissue. The mass appears to be composed of several small, irregularly shaped cells which could be cancerous cells.
+
+2 png
+The image shows a large mass in the center of the breast with several small areas around it. The mass appears to be growing rapidly and it is likely a cancerous tumor.
+
+3 png
+The image shows a small mass in the breast which is surrounded by a thick layer of tissue. The mass appears to be a tumor and it has a very irregular shape and size. It may be a malignant tumor or it may be a benign growth. Based on the size and shape of the mass, it is likely to be breast cancer.
+
+4 png
+The image shows a large mass in the center of the breast surrounded by a thin layer of tissue. The mass is surrounded by several small irregularly shaped areas which appear to be tumors. The image is black and white, with the image appearing to be slightly blurry due to the use of ultrasound technology.
+
+5 png
+The image shows a large mass in the center of the breast, surrounded by a ring of tissue around it. The mass appears to be growing rapidly and it is surrounded by a ring of tissue that appears to be surrounding it.
+
+6 png
+The image shows a large mass in the center of the breast which is surrounded by a thin layer of tissue. The mass appears to be composed of multiple small tumors, each with a distinct shape and color. The overall appearance of the mass is irregular and irregularly shaped, suggesting that it may be a tumor or a cyst.
+
+7 png
+This is an ultrasound image of breast cancer. The image shows a large mass in the breast which is surrounded by a thin layer of tissue. The mass appears to be growing rapidly and it is likely a cancerous tumor.
+
+8 png
+ The image shows a large mass in the breast with a dark outline around it. The mass appears to be a tumor and it is located near the center of the breast.
+ 
+ 9 png
+ The image shows a large mass in the center of the breast with a small area of normal tissue surrounding it. The mass appears to be growing rapidly and it is likely a cancerous tumor.
+ 
+ 10 png
+ The image shows a large mass in the center of the breast with a small area of normal tissue surrounding it.
