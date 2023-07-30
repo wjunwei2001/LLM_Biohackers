@@ -35,6 +35,11 @@ This is an ultrasound image of breast cancer. The image shows a large mass in th
  
  9 png
  The image shows a large mass in the center of the breast with a small area of normal tissue surrounding it. The mass appears to be growing rapidly and it is likely a cancerous tumor.
+
+Misc
+potentially useful US image dataset - but too late for us
+https://github.com/allenai/medicat
+https://github.com/razorx89/roco-dataset/blob/master/data/train/non-radiology/keywords.txt
  
  10 png
  The image shows a large mass in the center of the breast with a small area of normal tissue surrounding it.
