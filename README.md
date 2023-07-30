@@ -6,7 +6,9 @@ Our dataset initially contained extra data (*_mask.png files) as it originated f
 From there, we run the data_augmentation.py script to generate a wider variety of data to be used for future training of the model. We do so as training of the GAN model will be more effective on a larger dataset.
 
 ## GAN - Image-to-Image generation
-Generative Adversarial Networks use neural networks **Generative Modeling** for automatic discovery and learning of regularities or patterns in input data to be able to new examples that plausibly could have been drawn from the original dataset. The GAN model consists of 2 neural networks, **Generator** and **Discriminator**, that are trained in tandem for each batch of training data with the Generator's objective to "fool" the discriminator. Discriminator is trained for a few epochs, then the generator is trained for a few epochs, and repeat. This way both the generator and the discriminator get better at doing their jobs.
+Generative Adversarial Networks use neural networks **Generative Modeling** for automatic discovery and learning of regularities or patterns in input data to be able to new examples that plausibly could have been drawn from the original dataset. The GAN model consists of 2 neural networks, **Generator** and **Discriminator**, that are trained in tandem for each batch of training data with the Generator's objective to "fool" the discriminator. The Adam optimizer with some custom parameters (betas) that are known to work well for GANs.
+
+Discriminator is trained for a few epochs, then the generator is trained for a few epochs, and repeat. This way both the generator and the discriminator get better at doing their jobs. 
 
 <img width="346" alt="Screenshot 2023-07-30 at 1 16 09 PM" src="https://github.com/wjunwei2001/LLM_Biohackers/assets/96434745/716488f6-3fd8-46ac-a130-2988f206f2b2">
 
@@ -15,13 +17,13 @@ The generator generates a fake image given a seed of a latent tensor (matrix of 
 The output of the discriminator is a single number between 0 and 1, which can be interpreted as the probability of the input image being real i.e. picked from the original dataset. Since the discriminator is a binary classification model, the binary cross entropy loss function is used to quantify how well it is able to differentiate between real and generated images.
 
 GANs are extremely sensitive to hyperparameters, activation functions and regularization. Notably, we have tied down the to the following parameters to reach the current best model
-- beta value
-- learning rate
-- epochs ran
-- loss function
+- beta value (0.9)
+- learning rate (0.00005)
+- epochs ran (300-1000)
+- loss function (binary_cross_entropy)
 
 ### Running the GAN training script
-Define the hyperparameters of your choice before running the 1st `trainGAN.ipynb`. Batches of outputted sample images from the generator will be saved in the "generated" folder for user monitoring of the model. 
+Define the hyperparameters of your choice before running the 1st cell in `trainGAN.ipynb`. Batches of outputted sample images from the generator will be saved in the "generated" folder for user monitoring of the model. 
 
 Once training job is done, run the 2nd and 3rd cells to obtain the graphical visualisation of the model training performance. Visualizing
 losses is quite useful for monitoring the training process. For GANs, we expect the generator's loss to reduce over time, without the discriminator's loss getting too high.
