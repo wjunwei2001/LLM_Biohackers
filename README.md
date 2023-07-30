@@ -1,9 +1,17 @@
 # LLM_Biohackers
+Wang Junwei
+Goh Eng Zhong Joshua
+Qu Zhetao
+Jonathan Ng
+
 
 ## Data Processing & Augmentation
-Our dataset initially contained extra data (*_mask.png files) as it originated from a different project with a different use case. Our `data_extraction.py` file extracts the relevant files (non *_mask.png files) to obtain a dataset of only malignant breast cancer ultrasound images. 
+Our dataset initially contained extra data (*_mask.png files) as it originated from a different project with a different use case. Our `data_extraction.py` file filters and extracts the relevant files (non *_mask.png files) to obtain a dataset of only malignant breast cancer ultrasound images. 
 
-From there, we run the data_augmentation.py script to generate a wider variety of data to be used for future training of the model. We do so as training of the GAN model will be more effective on a larger dataset.
+From there, we run the data_augmentation.py script to generate a wider variety of data to be used for future training of the model, preventing overfitting of data. In this script, we adopt various techniques (Random Width & Height Shifting, Shearing, Horizontal Flipping) to generate a greater variety of data. 
+We do so as training of the GAN model will be more effective on a larger dataset.
+
+The dataset was obtained from https://www.kaggle.com/datasets/aryashah2k/breast-ultrasound-images-dataset 
 
 ## GAN - Image-to-Image generation
 Generative Adversarial Networks use neural networks **Generative Modeling** for automatic discovery and learning of regularities or patterns in input data to be able to new examples that plausibly could have been drawn from the original dataset. The GAN model consists of 2 neural networks, **Generator** and **Discriminator**, that are trained in tandem for each batch of training data with the Generator's objective to "fool" the discriminator. The Adam optimizer with some custom parameters (betas) that are known to work well for GANs.
@@ -21,6 +29,8 @@ GANs are extremely sensitive to hyperparameters, activation functions and regula
 - learning rate (0.00005)
 - epochs ran (300-1000)
 - loss function (binary_cross_entropy)
+
+The implementation of the GAN was inspired by the tutorial at https://jovian.com/aakashns/06b-anime-dcgan?action=duplicate_notebook 
 
 ### Running the GAN training script
 Define the hyperparameters of your choice before running the 1st cell in `trainGAN.ipynb`. Batches of outputted sample images from the generator will be saved in the "generated" folder for user monitoring of the model. 

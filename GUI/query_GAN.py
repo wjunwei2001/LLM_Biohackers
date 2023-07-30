@@ -1,13 +1,20 @@
 import torch
 import torch.nn as nn
 import matplotlib.pyplot as plt
+import os
 
+file_path = "C:/Users/admin/Documents/UltrasoundProject/LLM_Biohackers/GUI/G_300epoch_50k.pth"
+# print("hello", os.path)
+# if os.path.exists(file_path):
+#     print("File exists!")
+# else:
+#     print("File not found.")
 def load_model():
 
     latent_size = 128
 
     # Load the model parameters as a OrderedDict
-    state_dict = torch.load("G_100epoch_24k.pth")
+    state_dict = torch.load(file_path, map_location=torch.device('cpu'))
     print(state_dict.keys())
 
     # Create a torch.nn.Module object
@@ -50,19 +57,23 @@ batch_size = 10
 latent_size = 128
 
 # Generate an image using the generator model
-def generate_images(num):
+def generate_images(num, model):
+    fig, axs = plt.subplots(4, 4, figsize=(10, 10))
+
     for i in range(num):
         random_latent_vector = torch.randn(1, latent_size, 1, 1)
         with torch.no_grad():
             generated_image = model(random_latent_vector)
 
-        # Reshape the generated image to (3, 64, 64) for visualization (assuming you're using RGB images)
         generated_image = generated_image.squeeze().cpu().numpy()
 
-        # Scale the pixel values from [-1, 1] to [0, 1] for visualization
         generated_image = (generated_image + 1) / 2.0
 
-        # Display the generated image using matplotlib
-        plt.imshow(generated_image.transpose(1, 2, 0))
-        plt.axis('off')
-        plt.show()
+        row_index = i // 4
+        column_index = i % 4
+
+        axs[row_index, column_index].imshow(generated_image.transpose(1, 2, 0))
+        axs[row_index, column_index].axis('off')
+
+    plt.tight_layout()
+    plt.show()

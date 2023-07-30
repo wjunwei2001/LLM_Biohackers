@@ -8,13 +8,13 @@ def on_dropdown_selected(event):
 
 def on_button_click():
     print("Button clicked!")
-    load_model()
-    generate_images(1)
+    model = load_model()
+    generate_images(16, model)
 
 
 root = tk.Tk()
 label = tk.Label(root, text="Ultrasound Generative AI")
-label.pack()
+label.pack(side="top", pady=10)
 root.geometry("532x632")
 
 # Create sections
@@ -32,11 +32,11 @@ dropdown_var = tk.StringVar()
 dropdown = ttk.Combobox(root, textvariable=dropdown_var, values=options)
 dropdown_var.set(options[0])
 dropdown.bind("<<ComboboxSelected>>", on_dropdown_selected)
-dropdown.pack()
+dropdown.pack(side="top", pady=10)
 
 button = tk.Button(root, text="Click Me!", command=on_button_click)
 
 # Pack the button (or you can use grid or place layout manager)
-button.pack()
+button.pack(side="top", pady=20)
 
 root.mainloop()
